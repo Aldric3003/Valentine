@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Valentine's Day, Nessy! 💖</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <audio autoplay loop>
+        <source src="love.mp3" type="audio/mpeg">
+    </audio>
+    
+    <div class="container">
+        <h1 class="glow-text">Happy Valentine's Day, My Love! 💖</h1>
+        <p class="message">You are my dream, my joy, and my forever. I love you, Nessy! ❤️</p>
+
+        <div class="slider">
+            <div class="slide fade"><img src="nessy1.jpg" alt="Nessy 1"></div>
+            <div class="slide fade"><img src="nessy2.jpg" alt="Nessy 2"></div>
+        </div>
+
+        <button onclick="showLoveNote()">Click for a Special Message</button>
+
+        <div id="love-note" class="hidden">
+            <p class="letter">
+                Dear Nessy,  
+                You are the light in my life, the rhythm in my heart, and the reason for my smile.  
+                Every moment with you is magical, and I promise to cherish you forever.  
+                <span class="signature">- Yours Always, Aldric 💕</span>
+            </p>
+        </div>
+        
+        <div class="floating-hearts"></div>
+    </div>
+
+    <script>
+        function showLoveNote() {
+            document.getElementById("love-note").classList.toggle("hidden");
+        }
+
+        let index = 0;
+        function slideShow() {
+            let slides = document.querySelectorAll(".slide");
+            slides.forEach(slide => slide.style.display = "none");
+            index = (index + 1) % slides.length;
+            slides[index].style.display = "block";
+            setTimeout(slideShow, 3000);
+        }
+        slideShow();
+    </script>
+</body>
+</html>
