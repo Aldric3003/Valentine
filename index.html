@@ -3,51 +3,131 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Happy Valentine's Day, Nessy! 💖</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>For My Love, Nessy</title>
+    <style>
+        body {
+            background: linear-gradient(to bottom, #ff4d6d, #ffccd5);
+            color: red;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            overflow: hidden;
+        }
+        .container {
+            padding: 20px;
+            max-width: 90%;
+            margin: auto;
+        }
+        h1 {
+            font-size: 2em;
+            animation: fadeIn 2s ease-in-out;
+        }
+        p {
+            font-size: 1.2em;
+            animation: slideIn 2s ease-in-out;
+        }
+        img {
+            width: 80%;
+            max-width: 200px;
+            height: auto;
+            border-radius: 50%;
+            box-shadow: 0px 0px 15px white;
+            animation: bounce 2s infinite;
+        }
+        button {
+            background-color: #ff4d6d;
+            color: white;
+            border: none;
+            padding: 12px;
+            font-size: 1.2em;
+            margin-top: 20px;
+            cursor: pointer;
+            border-radius: 10px;
+            animation: fadeIn 2s ease-in-out;
+            width: 80%;
+            max-width: 300px;
+        }
+        button:hover {
+            background-color: #e63950;
+        }
+        .love-message {
+            display: none;
+            font-size: 1.5em;
+            margin-top: 20px;
+            animation: fadeIn 2s ease-in-out;
+        }
+        .hearts {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+        }
+        .heart {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: red;
+            clip-path: polygon(50% 0%, 100% 35%, 75% 100%, 50% 80%, 25% 100%, 0% 35%);
+            opacity: 0.6;
+            animation: float 5s linear infinite;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes slideIn {
+            from { transform: translateY(-50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        @keyframes float {
+            from { transform: translateY(100vh); }
+            to { transform: translateY(-10vh); }
+        }
+        .flowers {
+            display: none;
+            width: 60%;
+            max-width: 100px;
+            height: auto;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: fadeIn 2s ease-in-out;
+        }
+    </style>
 </head>
 <body>
-    <audio autoplay loop>
-        <source src="love.mp3" type="audio/mpeg">
-    </audio>
-    
     <div class="container">
-        <h1 class="glow-text">Happy Valentine's Day, My Love! 💖</h1>
-        <p class="message">You are my dream, my joy, and my forever. I love you, Nessy! ❤️</p>
-
-        <div class="slider">
-            <div class="slide fade"><img src="nessy1.jpg" alt="Nessy 1"></div>
-            <div class="slide fade"><img src="nessy2.jpg" alt="Nessy 2"></div>
-        </div>
-
-        <button onclick="showLoveNote()">Click for a Special Message</button>
-
-        <div id="love-note" class="hidden">
-            <p class="letter">
-                Dear Nessy,  
-                You are the light in my life, the rhythm in my heart, and the reason for my smile.  
-                Every moment with you is magical, and I promise to cherish you forever.  
-                <span class="signature">- Yours Always, Aldric 💕</span>
-            </p>
-        </div>
-        
-        <div class="floating-hearts"></div>
+        <h1>Happy Valentine's Day, Nessy! ❤️</h1>
+        <p>You are the most beautiful soul, my love. Every moment with you is a dream come true.</p>
+        <img src="nessy1.jpg" alt="Nessy">
+        <button onclick="showLoveMessage()">Press for Love ❤️</button>
+        <p class="love-message" id="loveMessage">You are my heart, my world, my everything. I love you forever! ❤️</p>
+        <img src="flower.jpg" class="flowers" id="flowers" alt="Flowers">
     </div>
-
+    <div class="hearts"></div>
     <script>
-        function showLoveNote() {
-            document.getElementById("love-note").classList.toggle("hidden");
+        function createHearts() {
+            const hearts = document.querySelector('.hearts');
+            for (let i = 0; i < 10; i++) {
+                let heart = document.createElement('div');
+                heart.className = 'heart';
+                heart.style.left = Math.random() * 100 + 'vw';
+                heart.style.animationDuration = (Math.random() * 3 + 2) + 's';
+                hearts.appendChild(heart);
+                setTimeout(() => heart.remove(), 5000);
+            }
         }
-
-        let index = 0;
-        function slideShow() {
-            let slides = document.querySelectorAll(".slide");
-            slides.forEach(slide => slide.style.display = "none");
-            index = (index + 1) % slides.length;
-            slides[index].style.display = "block";
-            setTimeout(slideShow, 3000);
+        setInterval(createHearts, 5000);
+        
+        function showLoveMessage() {
+            document.getElementById('loveMessage').style.display = 'block';
+            document.getElementById('flowers').style.display = 'block';
         }
-        slideShow();
     </script>
 </body>
 </html>
